@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -15,9 +16,10 @@ const Header = () => {
 
   const navItems = [
     { name: 'Home', href: '#home' },
-    { name: 'Features', href: '#features' },
+    { name: 'Stake', href: '#stake' },
+    { name: 'Tokenomics', href: '#tokenomics' },
     { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Join Pulse', href: '#join' },
   ];
 
   return (
@@ -25,7 +27,7 @@ const Header = () => {
       <div className="container">
         <nav className="nav">
           <div className="logo">
-            <span className="logo-text">Protone</span>
+            <span className="logo-font neon-text">$PROTONE</span>
           </div>
           
           <ul className="nav-links">
@@ -42,14 +44,12 @@ const Header = () => {
             className="mobile-menu-btn"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            <span></span>
-            <span></span>
-            <span></span>
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </nav>
 
         {isMobileMenuOpen && (
-          <div className="mobile-menu">
+          <div className="mobile-menu glass-card">
             {navItems.map((item) => (
               <a
                 key={item.name}
@@ -71,15 +71,15 @@ const Header = () => {
           left: 0;
           right: 0;
           z-index: 1000;
-          background: rgba(255, 255, 255, 0.95);
-          backdrop-filter: blur(10px);
-          border-bottom: 1px solid var(--border-color);
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          background: rgba(10, 10, 15, 0.9);
+          backdrop-filter: blur(20px);
+          border-bottom: 1px solid var(--border-glow);
+          transition: all 0.3s ease;
         }
 
         .header.scrolled {
-          background: rgba(255, 255, 255, 0.98);
-          box-shadow: var(--shadow-md);
+          background: rgba(10, 10, 15, 0.95);
+          box-shadow: 0 4px 20px rgba(139, 92, 246, 0.2);
         }
 
         .nav {
@@ -89,13 +89,9 @@ const Header = () => {
           padding: 1rem 0;
         }
 
-        .logo-text {
+        .logo-font {
           font-size: 1.75rem;
-          font-weight: 800;
-          background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          font-weight: 900;
         }
 
         .nav-links {
@@ -110,7 +106,11 @@ const Header = () => {
           text-decoration: none;
           color: var(--text-primary);
           font-weight: 500;
-          transition: color 0.3s ease;
+          font-family: 'Orbitron', monospace;
+          text-transform: uppercase;
+          font-size: 0.875rem;
+          letter-spacing: 1px;
+          transition: all 0.3s ease;
           position: relative;
         }
 
@@ -121,12 +121,13 @@ const Header = () => {
           left: 0;
           width: 0;
           height: 2px;
-          background: var(--primary-color);
+          background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple));
           transition: width 0.3s ease;
         }
 
         .nav-link:hover {
-          color: var(--primary-color);
+          color: var(--neon-cyan);
+          text-shadow: 0 0 10px var(--neon-cyan);
         }
 
         .nav-link:hover::after {
@@ -135,44 +136,40 @@ const Header = () => {
 
         .mobile-menu-btn {
           display: none;
-          flex-direction: column;
           background: none;
           border: none;
+          color: var(--text-primary);
           cursor: pointer;
           padding: 0.5rem;
-          gap: 4px;
-        }
-
-        .mobile-menu-btn span {
-          width: 25px;
-          height: 3px;
-          background: var(--text-primary);
-          transition: all 0.3s ease;
         }
 
         .mobile-menu {
           position: absolute;
           top: 100%;
-          left: 0;
-          right: 0;
-          background: white;
-          border-bottom: 1px solid var(--border-color);
-          padding: 1rem 0;
+          left: 1rem;
+          right: 1rem;
+          margin-top: 1rem;
+          padding: 1rem;
           animation: slideDown 0.3s ease;
         }
 
         .mobile-menu-link {
           display: block;
-          padding: 0.75rem 1.5rem;
+          padding: 0.75rem;
           text-decoration: none;
           color: var(--text-primary);
           font-weight: 500;
-          transition: background-color 0.3s ease;
+          font-family: 'Orbitron', monospace;
+          text-transform: uppercase;
+          font-size: 0.875rem;
+          letter-spacing: 1px;
+          transition: all 0.3s ease;
+          border-radius: 0.5rem;
         }
 
         .mobile-menu-link:hover {
-          background-color: var(--bg-secondary);
-          color: var(--primary-color);
+          background: rgba(139, 92, 246, 0.2);
+          color: var(--neon-cyan);
         }
 
         @keyframes slideDown {

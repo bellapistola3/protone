@@ -1,4 +1,5 @@
 import React from 'react';
+import { Twitter, Send, Github, Globe } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -9,66 +10,81 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-section">
             <div className="footer-logo">
-              <span className="logo-text">Protone</span>
+              <span className="logo-font neon-text">$PROTONE</span>
             </div>
             <p className="footer-description">
-              Building the future of digital innovation with cutting-edge technology 
-              and exceptional user experiences.
+              The first tone of the new era. Connecting human consciousness with 
+              artificial intelligence through decentralized finance.
             </p>
             <div className="social-links">
-              <a href="#" className="social-link">📘</a>
-              <a href="#" className="social-link">🐦</a>
-              <a href="#" className="social-link">💼</a>
-              <a href="#" className="social-link">📷</a>
+              <a href="#" className="social-link">
+                <Twitter size={20} />
+              </a>
+              <a href="#" className="social-link">
+                <Send size={20} />
+              </a>
+              <a href="#" className="social-link">
+                <Github size={20} />
+              </a>
+              <a href="#" className="social-link">
+                <Globe size={20} />
+              </a>
             </div>
           </div>
 
           <div className="footer-section">
-            <h3>Quick Links</h3>
+            <h3 className="heading-font">Quick Links</h3>
             <ul className="footer-links">
               <li><a href="#home">Home</a></li>
-              <li><a href="#features">Features</a></li>
+              <li><a href="#stake">Stake</a></li>
+              <li><a href="#tokenomics">Tokenomics</a></li>
               <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="#join">Join Pulse</a></li>
             </ul>
           </div>
 
           <div className="footer-section">
-            <h3>Services</h3>
+            <h3 className="heading-font">Resources</h3>
             <ul className="footer-links">
-              <li><a href="#">Web Development</a></li>
-              <li><a href="#">Mobile Apps</a></li>
-              <li><a href="#">Cloud Solutions</a></li>
-              <li><a href="#">Consulting</a></li>
-            </ul>
-          </div>
-
-          <div className="footer-section">
-            <h3>Support</h3>
-            <ul className="footer-links">
+              <li><a href="#">Whitepaper</a></li>
               <li><a href="#">Documentation</a></li>
-              <li><a href="#">Help Center</a></li>
-              <li><a href="#">Community</a></li>
-              <li><a href="#">Status</a></li>
+              <li><a href="#">Smart Contract</a></li>
+              <li><a href="#">Audit Report</a></li>
+            </ul>
+          </div>
+
+          <div className="footer-section">
+            <h3 className="heading-font">Community</h3>
+            <ul className="footer-links">
+              <li><a href="#">Discord</a></li>
+              <li><a href="#">Reddit</a></li>
+              <li><a href="#">Medium</a></li>
+              <li><a href="#">Newsletter</a></li>
             </ul>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {currentYear} Protone. All rights reserved.</p>
+          <div className="footer-bottom-left">
+            <p>&copy; {currentYear} PROTONE. Created by Ezhodus.</p>
+            <p className="disclaimer">
+              Not financial advice. Cryptocurrency investments carry risk.
+            </p>
+          </div>
           <div className="footer-bottom-links">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>
-            <a href="#">Cookie Policy</a>
+            <a href="#">Risk Disclosure</a>
           </div>
         </div>
       </div>
 
       <style jsx>{`
         .footer {
-          background: var(--bg-dark);
-          color: white;
+          background: var(--darker-bg);
+          color: var(--text-primary);
           padding: 3rem 0 1rem;
+          border-top: 1px solid var(--border-glow);
         }
 
         .footer-content {
@@ -79,24 +95,25 @@ const Footer = () => {
         }
 
         .footer-section h3 {
-          color: white;
+          color: var(--neon-cyan);
           margin-bottom: 1rem;
-          font-size: 1.25rem;
+          font-size: 1.125rem;
         }
 
-        .logo-text {
-          font-size: 1.75rem;
-          font-weight: 800;
-          background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+        .footer-logo {
+          margin-bottom: 1rem;
+        }
+
+        .logo-font {
+          font-size: 2rem;
+          font-weight: 900;
         }
 
         .footer-description {
-          color: #9ca3af;
+          color: var(--text-secondary);
           margin: 1rem 0 1.5rem;
           line-height: 1.6;
+          font-size: 0.875rem;
         }
 
         .social-links {
@@ -110,15 +127,18 @@ const Footer = () => {
           justify-content: center;
           width: 40px;
           height: 40px;
-          background: rgba(255, 255, 255, 0.1);
+          background: rgba(139, 92, 246, 0.2);
+          border: 1px solid var(--border-glow);
           border-radius: 50%;
+          color: var(--text-primary);
           text-decoration: none;
-          font-size: 1.25rem;
           transition: all 0.3s ease;
         }
 
         .social-link:hover {
-          background: var(--primary-color);
+          background: var(--neon-cyan);
+          color: var(--dark-bg);
+          box-shadow: 0 0 15px var(--neon-cyan);
           transform: translateY(-2px);
         }
 
@@ -133,22 +153,34 @@ const Footer = () => {
         }
 
         .footer-links a {
-          color: #9ca3af;
+          color: var(--text-secondary);
           text-decoration: none;
           transition: color 0.3s ease;
+          font-size: 0.875rem;
         }
 
         .footer-links a:hover {
-          color: var(--primary-color);
+          color: var(--neon-cyan);
         }
 
         .footer-bottom {
           display: flex;
           justify-content: space-between;
-          align-items: center;
+          align-items: flex-start;
           padding-top: 2rem;
-          border-top: 1px solid rgba(255, 255, 255, 0.1);
-          color: #9ca3af;
+          border-top: 1px solid rgba(139, 92, 246, 0.2);
+          color: var(--text-secondary);
+        }
+
+        .footer-bottom-left p {
+          margin: 0 0 0.5rem 0;
+          font-size: 0.875rem;
+        }
+
+        .disclaimer {
+          font-size: 0.75rem !important;
+          color: var(--text-light) !important;
+          font-style: italic;
         }
 
         .footer-bottom-links {
@@ -157,14 +189,14 @@ const Footer = () => {
         }
 
         .footer-bottom-links a {
-          color: #9ca3af;
+          color: var(--text-secondary);
           text-decoration: none;
           font-size: 0.875rem;
           transition: color 0.3s ease;
         }
 
         .footer-bottom-links a:hover {
-          color: var(--primary-color);
+          color: var(--neon-cyan);
         }
 
         @media (max-width: 768px) {
@@ -182,6 +214,11 @@ const Footer = () => {
 
           .footer-bottom-links {
             gap: 1rem;
+            justify-content: center;
+          }
+
+          .social-links {
+            justify-content: center;
           }
         }
       `}</style>

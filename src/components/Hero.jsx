@@ -1,4 +1,5 @@
 import React from 'react';
+import { Zap, TrendingUp, Shield } from 'lucide-react';
 
 const Hero = () => {
   return (
@@ -6,27 +7,59 @@ const Hero = () => {
       <div className="container">
         <div className="hero-content">
           <div className="hero-text">
+            <div className="hero-badge animate-fade-in-up">
+              <Zap size={16} />
+              <span>The First Tone of the New Era</span>
+            </div>
             <h1 className="hero-title animate-fade-in-up">
-              Welcome to Protone
+              $PROTONE
             </h1>
+            <p className="hero-subtitle animate-fade-in-up">
+              Created by Ezhodus. For people. With the support of AI.
+            </p>
             <p className="hero-description animate-fade-in-up">
-              Experience the future of digital innovation with our cutting-edge platform. 
-              We're building tomorrow's technology today, delivering exceptional solutions 
-              that transform the way you work and connect.
+              PROTONE is not just a token. It is a pulse. Connecting a person and consciousness 
+              through the power of decentralized finance and artificial intelligence.
             </p>
             <div className="hero-buttons animate-fade-in-up">
-              <a href="#features" className="btn btn-primary">
-                Get Started
+              <a href="#stake" className="btn btn-primary">
+                <TrendingUp size={20} />
+                Start Staking
               </a>
-              <a href="#about" className="btn btn-secondary">
+              <a href="#about" className="btn btn-neon">
+                <Shield size={20} />
                 Learn More
               </a>
             </div>
+            <div className="hero-stats animate-fade-in-up">
+              <div className="stat">
+                <div className="stat-number neon-text">$2.4M</div>
+                <div className="stat-label">Market Cap</div>
+              </div>
+              <div className="stat">
+                <div className="stat-number neon-text">15.2%</div>
+                <div className="stat-label">APY Staking</div>
+              </div>
+              <div className="stat">
+                <div className="stat-number neon-text">10K+</div>
+                <div className="stat-label">Holders</div>
+              </div>
+            </div>
           </div>
           <div className="hero-visual">
-            <div className="hero-shape animate-float"></div>
-            <div className="hero-shape-2"></div>
-            <div className="hero-shape-3"></div>
+            <div className="pulse-container">
+              <div className="pulse-ring animate-pulse"></div>
+              <div className="pulse-ring animate-pulse" style={{animationDelay: '0.5s'}}></div>
+              <div className="pulse-ring animate-pulse" style={{animationDelay: '1s'}}></div>
+              <div className="pulse-core animate-float">
+                <span className="logo-font">$P</span>
+              </div>
+            </div>
+            <div className="floating-elements">
+              <div className="floating-element animate-float" style={{animationDelay: '0.2s'}}>⚡</div>
+              <div className="floating-element animate-float" style={{animationDelay: '0.8s'}}>🌌</div>
+              <div className="floating-element animate-float" style={{animationDelay: '1.4s'}}>💎</div>
+            </div>
           </div>
         </div>
       </div>
@@ -36,21 +69,9 @@ const Hero = () => {
           min-height: 100vh;
           display: flex;
           align-items: center;
-          background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
           position: relative;
           overflow: hidden;
           padding-top: 80px;
-        }
-
-        .hero::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-          opacity: 0.5;
         }
 
         .hero-content {
@@ -62,67 +83,160 @@ const Hero = () => {
           z-index: 1;
         }
 
-        .hero-text {
+        .hero-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.5rem 1rem;
+          background: rgba(139, 92, 246, 0.2);
+          border: 1px solid var(--border-glow);
+          border-radius: 2rem;
+          font-size: 0.875rem;
+          font-weight: 600;
+          color: var(--neon-cyan);
+          margin-bottom: 2rem;
           animation-delay: 0.2s;
         }
 
         .hero-title {
-          margin-bottom: 1.5rem;
+          margin-bottom: 1rem;
           animation-delay: 0.3s;
+          font-size: clamp(3rem, 8vw, 6rem);
+        }
+
+        .hero-subtitle {
+          font-size: 1.5rem;
+          color: var(--text-secondary);
+          margin-bottom: 1rem;
+          animation-delay: 0.4s;
+          font-family: 'Orbitron', monospace;
+          font-weight: 400;
         }
 
         .hero-description {
-          font-size: 1.25rem;
+          font-size: 1.125rem;
+          color: var(--text-secondary);
           margin-bottom: 2rem;
-          animation-delay: 0.4s;
+          line-height: 1.8;
+          animation-delay: 0.5s;
         }
 
         .hero-buttons {
           display: flex;
           gap: 1rem;
-          animation-delay: 0.5s;
+          margin-bottom: 3rem;
+          animation-delay: 0.6s;
+        }
+
+        .hero-buttons .btn {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        .hero-stats {
+          display: flex;
+          gap: 2rem;
+          animation-delay: 0.7s;
+        }
+
+        .stat {
+          text-align: center;
+        }
+
+        .stat-number {
+          font-size: 2rem;
+          font-weight: 900;
+          font-family: 'Orbitron', monospace;
+          margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+          color: var(--text-secondary);
+          font-size: 0.875rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          font-family: 'Orbitron', monospace;
         }
 
         .hero-visual {
           position: relative;
-          height: 400px;
+          height: 500px;
           display: flex;
           align-items: center;
           justify-content: center;
         }
 
-        .hero-shape {
+        .pulse-container {
+          position: relative;
           width: 300px;
           height: 300px;
-          background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-          border-radius: 50% 40% 60% 30%;
-          position: relative;
-          z-index: 2;
-          box-shadow: var(--shadow-xl);
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
-        .hero-shape-2 {
+        .pulse-ring {
           position: absolute;
-          width: 200px;
-          height: 200px;
-          background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
-          border-radius: 40% 60% 30% 50%;
-          top: -50px;
-          right: -50px;
-          opacity: 0.7;
-          animation: float 4s ease-in-out infinite reverse;
-        }
-
-        .hero-shape-3 {
-          position: absolute;
-          width: 150px;
-          height: 150px;
-          background: linear-gradient(225deg, var(--secondary-color), var(--accent-color));
-          border-radius: 60% 30% 50% 40%;
-          bottom: -30px;
-          left: -30px;
+          width: 100%;
+          height: 100%;
+          border: 2px solid var(--neon-cyan);
+          border-radius: 50%;
           opacity: 0.6;
-          animation: float 5s ease-in-out infinite;
+        }
+
+        .pulse-ring:nth-child(2) {
+          width: 80%;
+          height: 80%;
+          border-color: var(--neon-purple);
+        }
+
+        .pulse-ring:nth-child(3) {
+          width: 60%;
+          height: 60%;
+          border-color: var(--neon-pink);
+        }
+
+        .pulse-core {
+          width: 120px;
+          height: 120px;
+          background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple));
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 3rem;
+          color: white;
+          box-shadow: 
+            0 0 30px var(--neon-cyan),
+            inset 0 0 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .floating-elements {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+        }
+
+        .floating-element {
+          position: absolute;
+          font-size: 2rem;
+          opacity: 0.7;
+        }
+
+        .floating-element:nth-child(1) {
+          top: 20%;
+          left: 10%;
+        }
+
+        .floating-element:nth-child(2) {
+          top: 60%;
+          right: 15%;
+        }
+
+        .floating-element:nth-child(3) {
+          bottom: 20%;
+          left: 20%;
         }
 
         @media (max-width: 768px) {
@@ -141,23 +255,24 @@ const Hero = () => {
             align-items: center;
           }
 
+          .hero-stats {
+            justify-content: center;
+            gap: 1.5rem;
+          }
+
           .hero-visual {
             height: 300px;
           }
 
-          .hero-shape {
+          .pulse-container {
             width: 200px;
             height: 200px;
           }
 
-          .hero-shape-2 {
-            width: 120px;
-            height: 120px;
-          }
-
-          .hero-shape-3 {
-            width: 100px;
-            height: 100px;
+          .pulse-core {
+            width: 80px;
+            height: 80px;
+            font-size: 2rem;
           }
         }
       `}</style>

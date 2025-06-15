@@ -1,44 +1,95 @@
 import React from 'react';
+import { Brain, Zap, Users, Target } from 'lucide-react';
 
 const About = () => {
+  const features = [
+    {
+      icon: <Brain />,
+      title: 'AI-Powered',
+      description: 'Built with artificial intelligence at its core, creating smarter financial solutions.'
+    },
+    {
+      icon: <Zap />,
+      title: 'Lightning Fast',
+      description: 'Ultra-fast transactions with minimal fees on advanced blockchain infrastructure.'
+    },
+    {
+      icon: <Users />,
+      title: 'Community Driven',
+      description: 'Governed by the community, for the community. Every voice matters in our ecosystem.'
+    },
+    {
+      icon: <Target />,
+      title: 'Purpose Built',
+      description: 'Designed specifically to bridge human consciousness with digital innovation.'
+    }
+  ];
+
   return (
     <section id="about" className="about">
       <div className="container">
         <div className="about-content">
           <div className="about-text">
-            <h2 className="animate-fade-in-up">About Protone</h2>
+            <h2 className="animate-fade-in-up heading-font">About PROTONE</h2>
+            <div className="about-tagline animate-fade-in-up">
+              <span className="neon-text">"PROTONE is not just a token. It is a pulse."</span>
+            </div>
             <p className="animate-fade-in-up">
-              At Protone, we're passionate about creating innovative solutions that push the 
-              boundaries of what's possible. Our team of dedicated professionals works tirelessly 
-              to deliver cutting-edge technology that empowers businesses and individuals alike.
+              Connecting a person and consciousness through the revolutionary power of decentralized 
+              finance and artificial intelligence. PROTONE represents the first tone of a new era, 
+              where technology serves humanity's highest potential.
             </p>
             <p className="animate-fade-in-up">
-              Founded on the principles of excellence, innovation, and user-centric design, 
-              we've been at the forefront of digital transformation, helping our clients 
-              achieve their goals through powerful, intuitive platforms.
+              Created by the enigmatic Ezhodus, an anonymous visionary who believes in the power 
+              of community-driven innovation. This isn't just another meme token – it's a movement 
+              with spirit, purpose, and the backing of cutting-edge AI technology.
             </p>
-            <div className="stats animate-fade-in-up">
-              <div className="stat">
-                <div className="stat-number">10K+</div>
-                <div className="stat-label">Happy Users</div>
-              </div>
-              <div className="stat">
-                <div className="stat-number">99.9%</div>
-                <div className="stat-label">Uptime</div>
-              </div>
-              <div className="stat">
-                <div className="stat-number">24/7</div>
-                <div className="stat-label">Support</div>
+            
+            <div className="creator-info glass-card animate-fade-in-up">
+              <h3 className="heading-font">About Ezhodus</h3>
+              <p>
+                The anonymous creator behind PROTONE, Ezhodus represents the spirit of decentralized 
+                innovation. Choosing to remain in the shadows, they let their work speak for itself – 
+                creating technology that empowers people rather than seeking personal recognition.
+              </p>
+              <div className="creator-philosophy">
+                <div className="philosophy-item">
+                  <strong>Why meme?</strong> Because culture drives adoption
+                </div>
+                <div className="philosophy-item">
+                  <strong>Why anonymous?</strong> Because ideas matter more than identity
+                </div>
+                <div className="philosophy-item">
+                  <strong>Why with spirit?</strong> Because technology should have soul
+                </div>
               </div>
             </div>
           </div>
-          <div className="about-visual">
-            <div className="about-image">
-              <img 
-                src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                alt="Team collaboration"
-                className="animate-fade-in-up"
-              />
+          
+          <div className="about-features">
+            <div className="features-grid">
+              {features.map((feature, index) => (
+                <div
+                  key={index}
+                  className="feature-card glass-card animate-fade-in-up"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="feature-icon neon-text">
+                    {feature.icon}
+                  </div>
+                  <h3 className="feature-title">{feature.title}</h3>
+                  <p className="feature-description">{feature.description}</p>
+                </div>
+              ))}
+            </div>
+            
+            <div className="vision-card glass-card animate-fade-in-up">
+              <h3 className="heading-font neon-text">Our Vision</h3>
+              <p>
+                To create a financial ecosystem where artificial intelligence and human consciousness 
+                work in harmony, enabling unprecedented levels of innovation, transparency, and 
+                community empowerment in the decentralized finance space.
+              </p>
             </div>
           </div>
         </div>
@@ -53,7 +104,7 @@ const About = () => {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 4rem;
-          align-items: center;
+          align-items: start;
         }
 
         .about-text h2 {
@@ -61,89 +112,130 @@ const About = () => {
           animation-delay: 0.2s;
         }
 
-        .about-text p {
-          margin-bottom: 1.5rem;
-          font-size: 1.125rem;
+        .about-tagline {
+          font-size: 1.5rem;
+          font-family: 'Orbitron', monospace;
+          font-weight: 600;
+          margin-bottom: 2rem;
           animation-delay: 0.3s;
         }
 
-        .stats {
-          display: flex;
-          gap: 2rem;
-          margin-top: 2rem;
+        .about-text p {
+          margin-bottom: 1.5rem;
+          font-size: 1.125rem;
+          color: var(--text-secondary);
+          line-height: 1.8;
           animation-delay: 0.4s;
         }
 
-        .stat {
+        .creator-info {
+          padding: 2rem;
+          margin-top: 2rem;
+          animation-delay: 0.5s;
+        }
+
+        .creator-info h3 {
+          margin-bottom: 1rem;
+          color: var(--neon-cyan);
+        }
+
+        .creator-info p {
+          margin-bottom: 1.5rem;
+        }
+
+        .creator-philosophy {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+
+        .philosophy-item {
+          padding: 0.75rem;
+          background: rgba(139, 92, 246, 0.1);
+          border-left: 3px solid var(--neon-cyan);
+          border-radius: 0.25rem;
+          font-size: 0.875rem;
+        }
+
+        .philosophy-item strong {
+          color: var(--neon-cyan);
+          font-family: 'Orbitron', monospace;
+        }
+
+        .features-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.5rem;
+          margin-bottom: 2rem;
+        }
+
+        .feature-card {
+          padding: 1.5rem;
+          text-align: center;
+          transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+          transform: translateY(-5px);
+        }
+
+        .feature-icon {
+          width: 60px;
+          height: 60px;
+          margin: 0 auto 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(139, 92, 246, 0.2);
+          border-radius: 50%;
+          font-size: 1.5rem;
+        }
+
+        .feature-title {
+          margin-bottom: 0.75rem;
+          color: var(--text-primary);
+          font-family: 'Orbitron', monospace;
+          font-size: 1.125rem;
+        }
+
+        .feature-description {
+          color: var(--text-secondary);
+          font-size: 0.875rem;
+          line-height: 1.6;
+          margin: 0;
+        }
+
+        .vision-card {
+          padding: 2rem;
           text-align: center;
         }
 
-        .stat-number {
-          font-size: 2.5rem;
-          font-weight: 800;
-          background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          margin-bottom: 0.5rem;
+        .vision-card h3 {
+          margin-bottom: 1rem;
         }
 
-        .stat-label {
+        .vision-card p {
           color: var(--text-secondary);
-          font-weight: 600;
-          text-transform: uppercase;
-          font-size: 0.875rem;
-          letter-spacing: 0.05em;
-        }
-
-        .about-visual {
-          position: relative;
-        }
-
-        .about-image {
-          position: relative;
-          border-radius: 1rem;
-          overflow: hidden;
-          box-shadow: var(--shadow-xl);
-        }
-
-        .about-image img {
-          width: 100%;
-          height: 400px;
-          object-fit: cover;
-          transition: transform 0.3s ease;
-        }
-
-        .about-image:hover img {
-          transform: scale(1.05);
-        }
-
-        .about-image::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: linear-gradient(135deg, var(--primary-color) 0%, transparent 50%);
-          opacity: 0.1;
-          z-index: 1;
+          line-height: 1.7;
+          margin: 0;
         }
 
         @media (max-width: 768px) {
           .about-content {
             grid-template-columns: 1fr;
             gap: 2rem;
-            text-align: center;
           }
 
-          .stats {
-            justify-content: center;
-            gap: 1.5rem;
+          .features-grid {
+            grid-template-columns: 1fr;
           }
 
-          .about-image img {
-            height: 300px;
+          .creator-info {
+            padding: 1.5rem;
+          }
+
+          .about-tagline {
+            font-size: 1.25rem;
           }
         }
       `}</style>

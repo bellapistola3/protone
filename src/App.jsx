@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Features from './components/Features';
+import Stake from './components/Stake';
+import Tokenomics from './components/Tokenomics';
 import About from './components/About';
-import Contact from './components/Contact';
+import JoinPulse from './components/JoinPulse';
 import Footer from './components/Footer';
+import ParticleBackground from './components/ParticleBackground';
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -15,12 +17,14 @@ function App() {
 
   return (
     <div className={`app ${isLoaded ? 'loaded' : ''}`}>
+      <ParticleBackground />
       <Header />
       <main>
         <Hero />
-        <Features />
+        <Stake />
+        <Tokenomics />
         <About />
-        <Contact />
+        <JoinPulse />
       </main>
       <Footer />
     </div>
