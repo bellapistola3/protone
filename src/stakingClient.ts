@@ -3,7 +3,7 @@ import { Program, AnchorProvider, web3, Idl } from '@coral-xyz/anchor';
 import idl from './idl.json';
 
 const programID = new PublicKey("GNLZojjXUJ3xZ4YimNEoAEEJmZNUz3AXvLn8NYjvcqAn");
-const network = "https://api.devnet.solana.com";
+const network = "https://api.mainnet-beta.solana.com";
 const opts = {
   preflightCommitment: "processed",
 };
