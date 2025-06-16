@@ -52,10 +52,10 @@ const Stake = () => {
       const duration = parseInt(stakePeriod);
 
       await stake(wallet, amount, duration);
-      alert("Stake successful!");
+      alert("✅ Stake successful!");
     } catch (err) {
       console.error(err);
-      alert("Stake failed!");
+      alert("❌ Stake failed. See console for details.");
     }
   };
 
