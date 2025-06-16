@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Lock, Unlock, Gift, TrendingUp, Clock, DollarSign } from 'lucide-react';
+import { stake } from '../stakingClient';
 
 const Stake = () => {
   const [stakeAmount, setStakeAmount] = useState('');
@@ -30,6 +31,32 @@ const Stake = () => {
 
   const connectWallet = () => {
     setWalletConnected(true);
+  };
+
+  const handleStake = async () => {
+    if (!window.solana || !window.solana.isPhantom) {
+      alert("Connect Phantom wallet first");
+      return;
+    }
+
+    try {
+      const provider = window.solana;
+      await provider.connect();
+      const wallet = {
+        publicKey: provider.publicKey,
+        signTransaction: provider.signTransaction,
+        signAllTransactions: provider.signAllTransactions,
+      };
+
+      const amount = parseFloat(stakeAmount) * 1_000_000;
+      const duration = parseInt(stakePeriod);
+
+      await stake(wallet, amount, duration);
+      alert("Stake successful!");
+    } catch (err) {
+      console.error(err);
+      alert("Stake failed!");
+    }
   };
 
   return (
@@ -127,7 +154,7 @@ const Stake = () => {
                 </div>
 
                 <div className="stake-actions">
-                  <button className="btn btn-primary">
+                  <button className="btn btn-primary" onClick={handleStake}>
                     <Lock size={20} />
                     Stake Tokens
                   </button>
@@ -145,189 +172,6 @@ const Stake = () => {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        .stake {
-          position: relative;
-        }
-
-        .section-header h2 {
-          margin-bottom: 1rem;
-        }
-
-        .section-header p {
-          font-size: 1.25rem;
-          color: var(--text-secondary);
-          max-width: 600px;
-          margin: 0 auto;
-        }
-
-        .stake-content {
-          display: grid;
-          grid-template-columns: 1fr 2fr;
-          gap: 2rem;
-          margin-top: 3rem;
-        }
-
-        .stake-stats {
-          display: flex;
-          flex-direction: column;
-          gap: 1.5rem;
-        }
-
-        .stat-card {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          padding: 1.5rem;
-        }
-
-        .stat-icon {
-          width: 50px;
-          height: 50px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: rgba(139, 92, 246, 0.2);
-          border-radius: 50%;
-        }
-
-        .stat-value {
-          font-size: 1.5rem;
-          font-weight: 700;
-          color: var(--text-primary);
-          font-family: 'Orbitron', monospace;
-        }
-
-        .stat-label {
-          font-size: 0.875rem;
-          color: var(--text-secondary);
-          text-transform: uppercase;
-          letter-spacing: 1px;
-        }
-
-        .stake-panel {
-          padding: 2rem;
-        }
-
-        .wallet-connect {
-          text-align: center;
-          padding: 2rem;
-        }
-
-        .input-group {
-          position: relative;
-        }
-
-        .input-suffix {
-          position: absolute;
-          right: 1rem;
-          top: 50%;
-          transform: translateY(-50%);
-          color: var(--text-secondary);
-          font-family: 'Orbitron', monospace;
-          font-size: 0.875rem;
-        }
-
-        .period-options {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 1rem;
-          margin-top: 0.5rem;
-        }
-
-        .period-option {
-          padding: 1rem;
-          background: rgba(15, 15, 25, 0.5);
-          border: 1px solid var(--border-glow);
-          border-radius: 0.5rem;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          text-align: center;
-        }
-
-        .period-option:hover,
-        .period-option.active {
-          border-color: var(--neon-cyan);
-          background: rgba(0, 255, 255, 0.1);
-          box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-        }
-
-        .period-days {
-          font-weight: 700;
-          color: var(--text-primary);
-          font-family: 'Orbitron', monospace;
-        }
-
-        .period-apy {
-          color: var(--neon-cyan);
-          font-weight: 600;
-          margin: 0.25rem 0;
-        }
-
-        .period-multiplier {
-          font-size: 0.75rem;
-          color: var(--text-secondary);
-          text-transform: uppercase;
-        }
-
-        .rewards-preview {
-          margin: 1.5rem 0;
-          padding: 1rem;
-        }
-
-        .rewards-info {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-        }
-
-        .rewards-amount {
-          font-size: 1.25rem;
-          font-weight: 700;
-          color: var(--neon-cyan);
-          font-family: 'Orbitron', monospace;
-        }
-
-        .rewards-label {
-          font-size: 0.875rem;
-          color: var(--text-secondary);
-        }
-
-        .stake-actions {
-          display: flex;
-          gap: 1rem;
-          flex-wrap: wrap;
-        }
-
-        .stake-actions .btn {
-          flex: 1;
-          min-width: 150px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-        }
-
-        @media (max-width: 768px) {
-          .stake-content {
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-          }
-
-          .period-options {
-            grid-template-columns: 1fr;
-          }
-
-          .stake-actions {
-            flex-direction: column;
-          }
-
-          .stake-actions .btn {
-            min-width: auto;
-          }
-        }
-      `}</style>
     </section>
   );
 };
