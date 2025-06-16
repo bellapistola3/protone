@@ -51,23 +51,6 @@ const Tokenomics = () => {
           <div className="tokenomics-chart animate-fade-in-up">
             <div className="chart-container">
               <div className="pie-chart">
-                {tokenomicsData.map((item, index) => {
-                  const rotation = tokenomicsData
-                    .slice(0, index)
-                    .reduce((acc, curr) => acc + (curr.percentage * 3.6), 0);
-                  
-                  return (
-                    <div
-                      key={item.category}
-                      className="pie-slice"
-                      style={{
-                        '--percentage': item.percentage,
-                        '--rotation': `${rotation}deg`,
-                        '--color': item.color
-                      }}
-                    />
-                  );
-                })}
                 <div className="chart-center">
                   <div className="chart-logo">$P</div>
                   <div className="chart-text">PROTONE</div>
@@ -320,6 +303,11 @@ const Tokenomics = () => {
           color: var(--text-secondary);
           line-height: 1.6;
           margin: 0;
+        }
+
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
         }
 
         @media (max-width: 768px) {

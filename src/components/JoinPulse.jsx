@@ -15,19 +15,52 @@ const JoinPulse = () => {
     { id: 'join', label: 'Join Telegram', reward: '125 $PROTONE' }
   ];
 
-  const connectWallet = () => {
-    // Simulate wallet connection
-    const mockAddress = '0x' + Math.random().toString(16).substr(2, 40);
-    setConnectedWallet(mockAddress);
-    setWalletAddress(mockAddress);
+  const connectWallet = async () => {
+    try {
+      if (window.solana && window.solana.isPhantom) {
+        const response = await window.solana.connect();
+        const address = response.publicKey.toString();
+        setConnectedWallet(address);
+        setWalletAddress(address);
+        console.log('Connected to wallet:', address);
+      } else {
+        // Simulate wallet connection for demo
+        const mockAddress = '0x' + Math.random().toString(16).substr(2, 40);
+        setConnectedWallet(mockAddress);
+        setWalletAddress(mockAddress);
+      }
+    } catch (error) {
+      console.error('Error connecting wallet:', error);
+      alert('Failed to connect wallet. Please try again.');
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    if (!walletAddress) {
+      alert('Please enter or connect your wallet address');
+      return;
+    }
+    
+    if (!selectedAction) {
+      alert('Please select an action to participate');
+      return;
+    }
+    
+    if (!twitterPost) {
+      alert('Please provide a link to your post/action');
+      return;
+    }
+    
     setIsSubmitted(true);
   };
 
   const checkReward = () => {
+    if (!walletAddress) {
+      alert('Please connect your wallet first');
+      return;
+    }
     alert('Your reward status: Pending verification. You will receive your tokens within 24 hours!');
   };
 
@@ -53,15 +86,15 @@ const JoinPulse = () => {
                 <Wallet />
                 <span>MetaMask</span>
               </button>
-              <button className="wallet-btn">
+              <button className="wallet-btn" onClick={connectWallet}>
                 <Wallet />
                 <span>WalletConnect</span>
               </button>
-              <button className="wallet-btn">
+              <button className="wallet-btn" onClick={connectWallet}>
                 <Wallet />
                 <span>Coinbase Wallet</span>
               </button>
-              <button className="wallet-btn">
+              <button className="wallet-btn" onClick={connectWallet}>
                 <Wallet />
                 <span>Trust Wallet</span>
               </button>
@@ -80,10 +113,10 @@ const JoinPulse = () => {
             <div className="buy-section">
               <h4 className="heading-font">Buy $PROTONE</h4>
               <div className="buy-options">
-                <button className="btn btn-primary">
+                <button className="btn btn-primary" onClick={() => alert('Redirecting to Uniswap...')}>
                   Buy on Uniswap
                 </button>
-                <button className="btn btn-neon">
+                <button className="btn btn-neon" onClick={() => alert('Redirecting to PancakeSwap...')}>
                   Buy on PancakeSwap
                 </button>
               </div>
@@ -109,7 +142,7 @@ const JoinPulse = () => {
                     id="wallet"
                     value={walletAddress}
                     onChange={(e) => setWalletAddress(e.target.value)}
-                    placeholder="0x..."
+                    placeholder="0x... or connect wallet above"
                     required
                   />
                 </div>
@@ -137,7 +170,7 @@ const JoinPulse = () => {
                     id="post"
                     value={twitterPost}
                     onChange={(e) => setTwitterPost(e.target.value)}
-                    placeholder="https://twitter.com/..."
+                    placeholder="https://twitter.com/... or https://t.me/..."
                     required
                   />
                 </div>
@@ -163,6 +196,16 @@ const JoinPulse = () => {
                 <div className="pioneer-badge">
                   <span className="neon-text">🏆 Pulse Pioneer Candidate</span>
                 </div>
+                <button 
+                  className="btn btn-neon mt-4" 
+                  onClick={() => {
+                    setIsSubmitted(false);
+                    setSelectedAction('');
+                    setTwitterPost('');
+                  }}
+                >
+                  Submit Another Entry
+                </button>
               </div>
             )}
           </div>
@@ -359,6 +402,11 @@ const JoinPulse = () => {
           border-radius: 0.5rem;
           font-weight: 700;
           font-family: 'Orbitron', monospace;
+          margin-bottom: 1rem;
+        }
+
+        .mt-4 {
+          margin-top: 1rem;
         }
 
         .social-coming-soon {
