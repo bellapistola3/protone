@@ -44,23 +44,3 @@ export const claim = async (wallet: any, stakeData: PublicKey) => {
     })
     .rpc();
 };
-
-    .accounts({
-      stakeData: stakeKeypair.publicKey,
-      user: wallet.publicKey,
-      systemProgram: web3.SystemProgram.programId,
-    })
-    .signers([stakeKeypair])
-    .rpc();
-};
-
-export const claim = async (wallet: any, stakeData: PublicKey) => {
-  const program = getProgram(wallet);
-  await program.methods
-    .claim()
-    .accounts({
-      stakeData,
-      user: wallet.publicKey,
-    })
-    .rpc();
-};
