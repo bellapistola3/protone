@@ -52,7 +52,11 @@ const Hero = () => {
               <div className="pulse-ring animate-pulse" style={{animationDelay: '0.5s'}}></div>
               <div className="pulse-ring animate-pulse" style={{animationDelay: '1s'}}></div>
               <div className="pulse-core animate-float">
-                <span className="logo-font">$P</span>
+                <img 
+                  src="/protone logo.png" 
+                  alt="PROTONE" 
+                  className="pulse-logo"
+                />
               </div>
             </div>
             <div className="floating-elements">
@@ -205,11 +209,17 @@ const Hero = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 3rem;
-          color: white;
           box-shadow: 
             0 0 30px var(--neon-cyan),
             inset 0 0 30px rgba(255, 255, 255, 0.2);
+          padding: 20px;
+        }
+
+        .pulse-logo {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          filter: brightness(1.2) drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
         }
 
         .floating-elements {
@@ -272,7 +282,7 @@ const Hero = () => {
           .pulse-core {
             width: 80px;
             height: 80px;
-            font-size: 2rem;
+            padding: 15px;
           }
         }
       `}</style>

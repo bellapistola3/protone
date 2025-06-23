@@ -52,7 +52,11 @@ const Tokenomics = () => {
             <div className="chart-container">
               <div className="pie-chart">
                 <div className="chart-center">
-                  <div className="chart-logo">$P</div>
+                  <img 
+                    src="/protone logo.png" 
+                    alt="PROTONE" 
+                    className="chart-logo"
+                  />
                   <div className="chart-text">PROTONE</div>
                 </div>
               </div>
@@ -179,14 +183,15 @@ const Tokenomics = () => {
           align-items: center;
           justify-content: center;
           border: 2px solid var(--border-glow);
+          padding: 15px;
         }
 
         .chart-logo {
-          font-size: 2rem;
-          font-weight: 900;
-          font-family: 'Orbitron', monospace;
-          color: var(--neon-cyan);
-          text-shadow: 0 0 10px var(--neon-cyan);
+          width: 50px;
+          height: 50px;
+          object-fit: contain;
+          filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.6));
+          margin-bottom: 5px;
         }
 
         .chart-text {
@@ -324,6 +329,12 @@ const Tokenomics = () => {
           .chart-center {
             width: 100px;
             height: 100px;
+            padding: 12px;
+          }
+
+          .chart-logo {
+            width: 40px;
+            height: 40px;
           }
 
           .supply-stats {

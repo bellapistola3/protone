@@ -10,7 +10,12 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-section">
             <div className="footer-logo">
-              <span className="logo-font neon-text">$PROTONE</span>
+              <img 
+                src="/protone logo.png" 
+                alt="PROTONE" 
+                className="footer-logo-image"
+              />
+              <span className="footer-logo-text">$PROTONE</span>
             </div>
             <p className="footer-description">
               The first tone of the new era. Connecting human consciousness with 
@@ -101,12 +106,25 @@ const Footer = () => {
         }
 
         .footer-logo {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
           margin-bottom: 1rem;
         }
 
-        .logo-font {
-          font-size: 2rem;
+        .footer-logo-image {
+          width: 35px;
+          height: 35px;
+          object-fit: contain;
+          filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.4));
+        }
+
+        .footer-logo-text {
+          font-family: 'Orbitron', monospace;
+          font-size: 1.5rem;
           font-weight: 900;
+          color: var(--neon-cyan);
+          text-shadow: 0 0 10px var(--neon-cyan);
         }
 
         .footer-description {
@@ -218,6 +236,10 @@ const Footer = () => {
           }
 
           .social-links {
+            justify-content: center;
+          }
+
+          .footer-logo {
             justify-content: center;
           }
         }

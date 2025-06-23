@@ -27,7 +27,12 @@ const Header = () => {
       <div className="container">
         <nav className="nav">
           <div className="logo">
-            <span className="logo-font neon-text">$PROTONE</span>
+            <img 
+              src="/protone logo.png" 
+              alt="PROTONE" 
+              className="logo-image"
+            />
+            <span className="logo-text">$PROTONE</span>
           </div>
           
           <ul className="nav-links">
@@ -89,9 +94,25 @@ const Header = () => {
           padding: 1rem 0;
         }
 
-        .logo-font {
-          font-size: 1.75rem;
+        .logo {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+        }
+
+        .logo-image {
+          width: 40px;
+          height: 40px;
+          object-fit: contain;
+          filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
+        }
+
+        .logo-text {
+          font-family: 'Orbitron', monospace;
+          font-size: 1.5rem;
           font-weight: 900;
+          color: var(--neon-cyan);
+          text-shadow: 0 0 10px var(--neon-cyan);
         }
 
         .nav-links {
@@ -190,6 +211,15 @@ const Header = () => {
 
           .mobile-menu-btn {
             display: flex;
+          }
+
+          .logo-text {
+            font-size: 1.25rem;
+          }
+
+          .logo-image {
+            width: 35px;
+            height: 35px;
           }
         }
       `}</style>
