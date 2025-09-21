@@ -1,10 +1,9 @@
 import { Connection, PublicKey } from '@solana/web3.js';
 import { Program, AnchorProvider, web3, Idl } from '@coral-xyz/anchor';
-import { BN } from 'bn.js';
 import idl from './idl.json';
 
-const programID = new PublicKey("GNLZojjXUJ3xZ4YimNEoAEEJmZNUz3AXvLn8NYjvcqAn"); // ⬅️ ВАЖНО: Това е твоя програм ID
-const network = "https://api.mainnet-beta.solana.com"; // ⬅️ MAINNET
+const programID = new PublicKey("GNLZojjXUJ3xZ4YimNEoAEEJmZNUz3AXvLn8NYjvcqAn");
+const network = "https://api.mainnet-beta.solana.com";
 const opts = {
   preflightCommitment: "processed",
 };
@@ -23,8 +22,10 @@ export const getProgram = (wallet: any) => {
 export const stake = async (wallet: any, amount: number, duration: number) => {
   const program = getProgram(wallet);
   const stakeKeypair = web3.Keypair.generate();
+  
+  // Use native JavaScript number instead of BN for simplicity
   await program.methods
-    .stake(new BN(amount), new BN(duration))
+    .stake(amount, duration)
     .accounts({
       stakeData: stakeKeypair.publicKey,
       user: wallet.publicKey,
