@@ -113,11 +113,11 @@ const JoinPulse = () => {
             <div className="buy-section">
               <h4 className="heading-font">Buy $PROTONE</h4>
               <div className="buy-options">
-                <button className="btn btn-primary" onClick={() => alert('Redirecting to Uniswap...')}>
-                  Buy on Uniswap
+                <button className="btn btn-primary" onClick={() => alert('Redirecting to Raydium...')}>
+                  Buy on Raydium
                 </button>
-                <button className="btn btn-neon" onClick={() => alert('Redirecting to PancakeSwap...')}>
-                  Buy on PancakeSwap
+                <button className="btn btn-neon" onClick={() => alert('Redirecting to Jupiter...')}>
+                  Buy on Jupiter
                 </button>
               </div>
             </div>
