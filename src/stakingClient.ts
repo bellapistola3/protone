@@ -1,5 +1,6 @@
 import { Connection, PublicKey } from '@solana/web3.js';
-import { Program, AnchorProvider, web3, Idl, BN } from '@coral-xyz/anchor';
+import { Program, AnchorProvider, web3, Idl } from '@coral-xyz/anchor';
+import { BN } from 'bn.js';
 import idl from './idl.json';
 
 const programID = new PublicKey("GNLZojjXUJ3xZ4YimNEoAEEJmZNUz3AXvLn8NYjvcqAn"); // ⬅️ ВАЖНО: Това е твоя програм ID
