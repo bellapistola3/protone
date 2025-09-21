@@ -22,13 +22,13 @@ const Hero = () => {
               through the power of decentralized finance and artificial intelligence.
             </p>
             <div className="hero-buttons animate-fade-in-up">
-              <a href="#stake" className="btn btn-primary">
+              <a href="https://raydium.io/swap/?inputCurrency=sol&outputCurrency=52tAqR4GXMbqNfWb5Rq3f59Cry7GogRbfZ7ReyVEGDC2" target="_blank" className="btn btn-primary">
                 <TrendingUp size={20} />
-                Start Staking
+                Buy $PROTONE
               </a>
-              <a href="#about" className="btn btn-neon">
+              <a href="#stake" className="btn btn-neon">
                 <Shield size={20} />
-                Learn More
+                Start Staking
               </a>
             </div>
             <div className="hero-stats animate-fade-in-up">

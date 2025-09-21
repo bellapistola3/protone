@@ -2,7 +2,11 @@ import { Connection, PublicKey } from '@solana/web3.js';
 import { Program, AnchorProvider, web3, Idl } from '@coral-xyz/anchor';
 import idl from './idl.json';
 
-const programID = new PublicKey("GNLZojjXUJ3xZ4YimNEoAEEJmZNUz3AXvLn8NYjvcqAn");
+// PROTONE Token Contract Addresses
+const PROTONE_MINT = new PublicKey("52tAqR4GXMbqNfWb5Rq3f59Cry7GogRbfZ7ReyVEGDC2");
+const PROTONE_LP = new PublicKey("68E9whND73xeXr9uTDv1dEjnA9EPmrSW2tuPhL1YGsHE");
+const POOL_ID = new PublicKey("LWV1NbKa2GTwS9muveoQSu7R4vksGFb5WYfr2zZKpYi");
+const programID = new PublicKey("4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R");
 const network = "https://api.mainnet-beta.solana.com";
 const opts = {
   preflightCommitment: "processed",

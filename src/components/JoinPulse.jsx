@@ -113,10 +113,10 @@ const JoinPulse = () => {
             <div className="buy-section">
               <h4 className="heading-font">Buy $PROTONE</h4>
               <div className="buy-options">
-                <button className="btn btn-primary" onClick={() => alert('Redirecting to Raydium...')}>
+                <button className="btn btn-primary" onClick={() => window.open('https://raydium.io/swap/?inputCurrency=sol&outputCurrency=52tAqR4GXMbqNfWb5Rq3f59Cry7GogRbfZ7ReyVEGDC2', '_blank')}>
                   Buy on Raydium
                 </button>
-                <button className="btn btn-neon" onClick={() => alert('Redirecting to Jupiter...')}>
+                <button className="btn btn-neon" onClick={() => window.open('https://jup.ag/swap/SOL-52tAqR4GXMbqNfWb5Rq3f59Cry7GogRbfZ7ReyVEGDC2', '_blank')}>
                   Buy on Jupiter
                 </button>
               </div>
