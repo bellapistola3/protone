@@ -1,5 +1,5 @@
 import { Connection, PublicKey } from '@solana/web3.js';
-import { Program, AnchorProvider, web3, Idl } from '@coral-xyz/anchor';
+import { Program, AnchorProvider, web3, Idl, BN } from '@coral-xyz/anchor';
 import idl from './idl.json';
 
 const programID = new PublicKey("GNLZojjXUJ3xZ4YimNEoAEEJmZNUz3AXvLn8NYjvcqAn"); // ⬅️ ВАЖНО: Това е твоя програм ID
@@ -23,7 +23,7 @@ export const stake = async (wallet: any, amount: number, duration: number) => {
   const program = getProgram(wallet);
   const stakeKeypair = web3.Keypair.generate();
   await program.methods
-    .stake(new web3.BN(amount), new web3.BN(duration))
+    .stake(new BN(amount), new BN(duration))
     .accounts({
       stakeData: stakeKeypair.publicKey,
       user: wallet.publicKey,
